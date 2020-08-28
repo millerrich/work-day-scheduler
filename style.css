@@ -70,8 +70,8 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
-p {
-  height: 60px;
-  padding-top: 10px;
-  padding-bottom: 20px;
+input {
+  border: none;
+  background: transparent;
+  width: 100%;
 }
