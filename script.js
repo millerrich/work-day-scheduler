@@ -11,6 +11,7 @@ $(displayDate).text(currentTime._d);
 
 
 function init() {
+    compareTime();
     var storedEvents = JSON.parse(localStorage.getItem("schedule"));
         if(storedEvents) {
             schedule = storedEvents;
@@ -37,15 +38,15 @@ function compareTime() {
     
 
     $('.col-8').each(function(response) {
-        var schedHour = response + 9
+        var schedHour = response + 9;
         console.log(schedHour);
 
         if (schedHour < currentHour) {
             $(this).addClass("past");
-        } else if (schedHour = currentHour) {
-            $(this).addClass("present");
         } else if (schedHour > currentHour) {
             $(this).addClass("future");
+        } else if (schedHour = currentHour) {
+            $(this).addClass("present");
         }
     });
 }
@@ -53,7 +54,7 @@ function compareTime() {
 $('.saveBtn').on("click", function (event) {
     event.preventDefault();
 
-    compareTime();
+    // compareTime();
 
     var $input = $(this).prev();
 
@@ -61,12 +62,13 @@ $('.saveBtn').on("click", function (event) {
             eventTitle: $input.val(),
             hour: $input.attr("data-hour")
         };
-        console.log($input.val());
+        // console.log($input.val());
 
         schedule.push(userEvent);
         storeEvents();
         renderEvents();
 });
+
 init();
 console.log(currentTime);
 console.log(currentHour);
