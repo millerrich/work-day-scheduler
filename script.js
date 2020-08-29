@@ -33,23 +33,27 @@ function storeEvents() {
     localStorage.setItem("schedule", JSON.stringify(schedule));
 }
 
-// function compareTime() {
-//     $.each($('.col-8'), function() {
+function compareTime() {
+    
 
-//         if ('data-hour' < currentHour) {
-//             $(this).addClass("past");
-//         } else if ('data-hour' = currentHour) {
-//             $(this).addClass("present");
-//         } else if ('data-hour' > currentHour) {
-//             $(this).addClass("future");
-//         }
-//     });
-// }
+    $('.col-8').each(function(response) {
+        var schedHour = response + 9
+        console.log(schedHour);
+
+        if (schedHour < currentHour) {
+            $(this).addClass("past");
+        } else if (schedHour = currentHour) {
+            $(this).addClass("present");
+        } else if (schedHour > currentHour) {
+            $(this).addClass("future");
+        }
+    });
+}
 
 $('.saveBtn').on("click", function (event) {
     event.preventDefault();
 
-    // compareTime();
+    compareTime();
 
     var $input = $(this).prev();
 
