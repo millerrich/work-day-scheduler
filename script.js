@@ -5,11 +5,14 @@ var currentHour = moment().hour();
 var schedule = [];
 var eventInput;
 
+// console.log(currentTime);
+// console.log(currentHour);
 
 
 $(displayDate).text(currentTime._d);
 
-
+// checks local storage for stored events and moves them to schedule if there are any
+// callback for renderEvents
 function init() {
     compareTime();
     var storedEvents = JSON.parse(localStorage.getItem("schedule"));
@@ -18,6 +21,7 @@ function init() {
         }
         renderEvents();
 }
+
 
 function renderEvents() {
     for (var i = 0; i < schedule.length; i++) {
@@ -34,12 +38,15 @@ function storeEvents() {
     localStorage.setItem("schedule", JSON.stringify(schedule));
 }
 
+// this function compares the schedules hour to the current hour
+// it will change the background color accordingly
+// grey for past, red for present and green for future
 function compareTime() {
     
 
     $('.col-8').each(function(response) {
         var schedHour = response + 9;
-        console.log(schedHour);
+        // console.log(schedHour);
 
         if (schedHour < currentHour) {
             $(this).addClass("past");
@@ -51,10 +58,9 @@ function compareTime() {
     });
 }
 
+// runs function on click of save button
 $('.saveBtn').on("click", function (event) {
     event.preventDefault();
-
-    // compareTime();
 
     var $input = $(this).prev();
 
@@ -68,7 +74,5 @@ $('.saveBtn').on("click", function (event) {
         storeEvents();
         renderEvents();
 });
-
+// callback for init function
 init();
-console.log(currentTime);
-console.log(currentHour);
