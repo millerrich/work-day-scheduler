@@ -17,3 +17,6 @@ Your planner will display three different colors based on the current time:
 
 Refreshing your browser will update the time and the corresponding colors for your planner. If you wish to remove a saved note from your planner simply click on the text field, erase your text and hit the save button.
 ![](images/filledPlanner.png)
+
+## Link
+https://millerrich.github.io/work-day-scheduler/
